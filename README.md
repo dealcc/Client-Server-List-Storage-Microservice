@@ -13,9 +13,7 @@ socket.connect("tcp://localhost:5555")
 
 ## CREATING AND DELETING DATA 
  
-To create data and send it to the server, refer to the client.py file, specifically the send_list(id, data_list) function  
-
-The three lines contained are essential for properly sending the message, as the server is expecting a pickle serialized data list and a unique ID through a zmq python request:
+To create data and send it to the server you simply create the list of data and a unique id for said data, then create a request with those two fields and serialize them to send over the network, then send use the socket you created to send it over the network. Refer to the code example below:    
 
 
 ```
@@ -30,7 +28,7 @@ response = pickle.loads(socket.recv()) # pickle.loads() deserializes the respons
   
 To edit an entry in the database, simply do the same method as above with the ID of the entry you would like to change and a new list and the server will automatically update the entry with that new list  
   
-To delete an entry in the database, refer to the delete_list() function in client.py, it is essentially the same as send_list in its request but instead of the type being "send_list", it is now "delete_list" and with no "data" entry:
+To delete an entry in the database, it is essentially the same as send_list in its request but instead of the type being "send_list", it is now "delete_list" and with no "data" entry:
 
 ```
 id = "1234"

@@ -35,7 +35,7 @@ def create_table():
 ############################################
 # This function saves a list to the database with a unique ID.
 #
-# inputs : id: Int - a unique identifier for the list
+# inputs : id: str - a unique identifier for the list
 #          data_list: List - a list of items to save to the database
 #
 # outputs: None
@@ -58,7 +58,7 @@ def save_list_to_db(id, data_list):
 ############################################
 # This function loads a list from the database using a unique ID.
 #
-# inputs : id: Int - a unique identifier for the list
+# inputs : id: str - a unique identifier for the list
 #
 # outputs: List - a list of items loaded from the database
 ###########################################
@@ -81,7 +81,7 @@ def load_list_from_db(id):
 ############################################
 # This function deletes a list from the database using a unique ID.
 #
-# inputs : id: Int - a unique identifier for the list
+# inputs : id: str - a unique identifier for the list
 #
 # outputs: None
 ###########################################
@@ -110,6 +110,8 @@ while True:
     # receive the message from the client
     message = socket.recv()
     request = pickle.loads(message) # pickle.loads() deserializes the request dictionary
+
+    print(f"Received request: {request}")
 
     # check the type of request and respond accordingly
     if request["type"] == "send_list":
@@ -140,4 +142,5 @@ while True:
         response = {"status": "error", "message": "Invalid request type."}
 
     # send the response back to the client
+    print(f"Sending response: {response}")
     socket.send(pickle.dumps(response)) # pickle.dumps() serializes the response dictionary for sending over the network

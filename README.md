@@ -49,5 +49,5 @@ response = pickle.loads(socket.recv()) # pickle.loads() deserializes the respons
 The "response" variable in this code should contain the data list that was requested or an error message saying that the ID does not exist in the database.
 
 # UML DIAGRAM UTILIZING EXAMPLE CLIENT IMPLEMENTATION 
-(![UML diagram of example client implementation](https://github.com/user-attachments/assets/56edc118-ae07-4481-869a-ca5f91a10238)
+(![UML diagram of example client implementation](https://github.com/user-attachments/assets/a537bd00-4541-4f7e-b0f8-41f2316e1b30))
 
